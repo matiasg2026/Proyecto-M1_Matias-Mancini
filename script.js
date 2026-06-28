@@ -22,7 +22,9 @@ junto a su código correspondiente.
 const boton = document.getElementById("generarBtn");
 const paleta = document.getElementById("paleta");
 const cantidad = document.getElementById("cantidad");
+const formato = document.getElementById("formato");
 const toast = document.getElementById("toast");
+
 
 // ==========================================
 // FUNCIÓN PARA GENERAR UN COLOR HEX
@@ -42,6 +44,13 @@ function generarColorHex() {
     return color;
 }
 
+function generarColorHSL(){
+    
+    const h = Math.floor(Math.random() *361);
+    const s = Math.floor(Math.random() *41) +60;
+    const L = Math.floor(Math.random() *31) +35;
+    return `hsl(${h}, ${s}%, ${L}%)`;
+    }
 
 // ==========================================
 // FUNCIÓN GENERAR PALETA
@@ -59,7 +68,13 @@ function generarPaleta() {
 
     for(let i = 0; i < total; i++) {
 
-        const color = generarColorHex();
+        let color;
+
+        if(formato.value === "hex"){
+            color = generarColorHex();
+        } else {
+            color = generarColorHSL();
+        }
 
         const tarjeta = document.createElement("article");
         tarjeta.classList.add("color-card");
