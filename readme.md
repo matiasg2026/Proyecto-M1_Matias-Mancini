@@ -8,7 +8,7 @@ Generador de paletas aleatorias con formatos **HEX** y **HSL**, incluyendo copia
 
 <br>
 
-<img src="assets/img/captura de pantalla(77).png" width="900" alt="Vista previa del proyecto">
+<img src="assets/img/captura1.png" width="700" alt="Vista previa del proyecto">
 
 <br><br>
 
@@ -47,7 +47,7 @@ La aplicación permite generar paletas de colores aleatorias en formato **HEX** 
 # 📸 Vista previa
 
 <p align="center">
-<img src="assets/img/captura de pantalla(78).png" width="700">
+<img src="assets/img/captura2.png" width="700">
 </p>
 
 ---
