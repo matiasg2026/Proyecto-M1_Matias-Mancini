@@ -80,12 +80,18 @@ function generarPaleta() {
         tarjeta.classList.add("color-card");
 
         tarjeta.style.backgroundColor = color;
-
+        
         tarjeta.innerHTML = `
             <span class="codigo">${color}</span>
         `;
 
-        paleta.appendChild(tarjeta);
+        tarjeta.addEventListener("click", async function () {
+      await navigator.clipboard.writeText(color);
+      mostrarToast("Copiado: " + color);
+});
+
+
+         paleta.appendChild(tarjeta);
     }
 
     mostrarToast();
@@ -98,8 +104,8 @@ function generarPaleta() {
 // indicando que la paleta fue generada.
 // ==========================================
 
-function mostrarToast() {
-
+function mostrarToast(mensaje= "Paleta generada") {
+    toast.textContent= mensaje ;
     toast.classList.add("mostrar");
 
     setTimeout(() => {
