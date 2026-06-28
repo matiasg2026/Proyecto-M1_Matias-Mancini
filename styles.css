@@ -42,11 +42,15 @@ h1{
 ========================================== */
 .controles{
     display:flex;
-    justify-content:center;
-    align-items:center;
+    align-items:stretch;
     gap:20px;
     flex-wrap:wrap;
     margin-bottom:30px;
+    background: white;
+    border-radius: 16px;
+    padding: 25px 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+    justify-content:center;
 }
 
 /* ==========================================
@@ -57,7 +61,20 @@ h1{
 .grupo-control{
     display:flex;
     flex-direction:column;
-    gap:5px;
+    justify-content:center;
+    gap:6px;
+    background: #eef2ff;
+    border: 1px solid #dbe3fc;
+    border-radius: 10px;
+    padding: 12px 18px;
+    
+}
+
+select{
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
 }
 
 label{
@@ -85,6 +102,10 @@ button{
     color:white;
     border-radius:8px;
     transition:.3s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    
 }
 
 button:hover{
@@ -108,7 +129,7 @@ select:focus{
 ========================================== */
 .paleta{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:15px;
 }
 
@@ -123,6 +144,7 @@ select:focus{
     justify-content:center;
     align-items:flex-end;
     padding:15px;
+    gap: 8px;
     color:white;
     font-weight:bold;
     box-shadow:0 4px 10px rgba(0,0,0,.15);
@@ -134,11 +156,42 @@ select:focus{
 ========================================== */
 .codigo{
     background:rgba(0,0,0,.4);
-    padding:8px 12px;
+    padding:6px 8px;
     border-radius:6px;
-    width: 170px;
+    height: 40px;
+    min-height: 40px;
+    flex: 1;
+    min-width: 0;
+    font-size: 0.85rem;
     text-align:center;
     white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.btn-bloquear{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    flex-shrink: 0;
+    padding: 0;
+    border-radius: 6px;
+    background: rgba(0,0,0,.4);
+    color: white;
+    font-size: 0.9rem;
+    line-height: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    
 }
 
 /* ==========================================

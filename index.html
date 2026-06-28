@@ -16,7 +16,7 @@
 
         <section class="controles">
 
-            <div class="grupo-control">
+            <fieldset class="grupo-control">
                 <label for="cantidad">
                     Cantidad de colores:
                 </label>
@@ -26,14 +26,15 @@
                     <option value="8">8 colores</option>
                     <option value="9">9 colores</option>
                 </select>
-            </div>
+            </fieldset>
 
-            <label for="formato">Formato</label>
-            
-             <select id="formato">
-                <option value="hex">HEX</option>
-                <option value="hsl">HSL</option>
-            </select>
+            <fieldset class="grupo-control">
+                <label for="formato">Formato</label>
+                <select id="formato">
+                    <option value="hex">HEX</option>
+                    <option value="hsl">HSL</option>
+                </select>
+            </fieldset>
 
             <button id="generarBtn">
                 Generar Paleta

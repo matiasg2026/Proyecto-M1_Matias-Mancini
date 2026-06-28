@@ -31,6 +31,7 @@ const toast = document.getElementById("toast");
 // Crea un color aleatorio en formato HEX.
 // Ejemplo: #4F8A2C
 // ==========================================
+let paletaActual = [];
 
 function generarColorHex() {
 
@@ -62,39 +63,53 @@ function generarColorHSL(){
 
 function generarPaleta() {
 
+    const total = Number(cantidad.value);
+    const nuevaPaleta = [];
+
+    for (let i = 0; i < total; i++) {
+        if (paletaActual[i] && paletaActual[i].bloqueado) {
+            nuevaPaleta.push(paletaActual[i]);
+        } else {
+            const color = formato.value === "hex" ? generarColorHex() : generarColorHSL();
+            nuevaPaleta.push({ color: color, bloqueado: false });
+        }
+    }
+
+    paletaActual = nuevaPaleta;
+    renderizarPaleta();
+    mostrarToast("Paleta generada");
+}
+
+function renderizarPaleta() {
+
     paleta.innerHTML = "";
 
-    const total = Number(cantidad.value);
-
-    for(let i = 0; i < total; i++) {
-
-        let color;
-
-        if(formato.value === "hex"){
-            color = generarColorHex();
-        } else {
-            color = generarColorHSL();
-        }
+    paletaActual.forEach((item) => {
 
         const tarjeta = document.createElement("article");
         tarjeta.classList.add("color-card");
+        if (item.bloqueado) tarjeta.classList.add("bloqueado");
 
-        tarjeta.style.backgroundColor = color;
-        
+        tarjeta.style.backgroundColor = item.color;
+
         tarjeta.innerHTML = `
-            <span class="codigo">${color}</span>
+            <button class="btn-bloquear" type="button">${item.bloqueado ? "🔒" : "🔓"}</button>
+            <span class="codigo">${item.color}</span>
         `;
 
         tarjeta.addEventListener("click", async function () {
-      await navigator.clipboard.writeText(color);
-      mostrarToast("Copiado: " + color);
-});
+            await navigator.clipboard.writeText(item.color);
+            mostrarToast("Copiado: " + item.color);
+        });
 
+        tarjeta.querySelector(".btn-bloquear").addEventListener("click", function (e) {
+            e.stopPropagation();
+            item.bloqueado = !item.bloqueado;
+            renderizarPaleta();
+        });
 
-         paleta.appendChild(tarjeta);
-    }
-
-    mostrarToast();
+        paleta.appendChild(tarjeta);
+    });
 }
 
 
