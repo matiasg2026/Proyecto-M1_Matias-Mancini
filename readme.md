@@ -47,7 +47,7 @@ La aplicación permite generar paletas de colores aleatorias en formato **HEX** 
 # 📸 Vista previa
 
 <p align="center">
-<img src="assets/img/captura2.png" width="700">
+<img src="./assets/Img/captura2.png" width="700">
 </p>
 
 ---
