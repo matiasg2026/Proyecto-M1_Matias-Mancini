@@ -46,12 +46,68 @@ function generarColorHex() {
 }
 
 function generarColorHSL(){
-    
+
     const h = Math.floor(Math.random() *361);
     const s = Math.floor(Math.random() *41) +60;
     const L = Math.floor(Math.random() *31) +35;
     return `hsl(${h}, ${s}%, ${L}%)`;
     }
+
+    function hexAHSL(hex) {
+
+    let r = parseInt(hex.substring(1, 3), 16) / 255;
+    let g = parseInt(hex.substring(3, 5), 16) / 255;
+    let b = parseInt(hex.substring(5, 7), 16) / 255;
+
+    let max = Math.max(r, g, b);
+    let min = Math.min(r, g, b);
+
+    let h, s, l;
+
+    l = (max + min) / 2;
+
+    if (max === min) {
+
+        h = 0;
+        s = 0;
+
+    } else {
+
+        let d = max - min;
+
+        s = l > 0.5
+            ? d / (2 - max - min)
+            : d / (max + min);
+
+        switch (max) {
+
+            case r:
+                h = (g - b) / d + (g < b ? 6 : 0);
+                break;
+
+            case g:
+                h = (b - r) / d + 2;
+                break;
+
+            case b:
+                h = (r - g) / d + 4;
+                break;
+
+        }
+
+        h /= 6;
+
+    }
+
+    h = Math.round(h * 360);
+    s = Math.round(s * 100);
+    l = Math.round(l * 100);
+
+    return `hsl(${h}, ${s}%, ${l}%)`;
+
+}
+
+
 
 // ==========================================
 // FUNCIÓN GENERAR PALETA
@@ -70,7 +126,8 @@ function generarPaleta() {
         if (paletaActual[i] && paletaActual[i].bloqueado) {
             nuevaPaleta.push(paletaActual[i]);
         } else {
-            const color = formato.value === "hex" ? generarColorHex() : generarColorHSL();
+            
+             const color = generarColorHex();
             nuevaPaleta.push({ color: color, bloqueado: false });
         }
     }
@@ -92,14 +149,24 @@ function renderizarPaleta() {
 
         tarjeta.style.backgroundColor = item.color;
 
-        tarjeta.innerHTML = `
+         let codigoMostrar;
+
+         if (formato.value === "hex") {
+          codigoMostrar = item.color;
+        } else {
+      codigoMostrar = hexAHSL(item.color);
+}
+
+
+
+       tarjeta.innerHTML = `
             <button class="btn-bloquear" type="button">${item.bloqueado ? "🔒" : "🔓"}</button>
-            <span class="codigo">${item.color}</span>
+            <span class="codigo">${codigoMostrar}</span>
         `;
 
         tarjeta.addEventListener("click", async function () {
-            await navigator.clipboard.writeText(item.color);
-            mostrarToast("Copiado: " + item.color);
+            await navigator.clipboard.writeText(codigoMostrar);
+            mostrarToast("Copiado: " + codigoMostrar);
         });
 
         tarjeta.querySelector(".btn-bloquear").addEventListener("click", function (e) {
@@ -129,5 +196,7 @@ function mostrarToast(mensaje= "Paleta generada") {
 }
 
 boton.addEventListener("click", generarPaleta);
+
+formato.addEventListener("change", renderizarPaleta);
 
 generarPaleta();
