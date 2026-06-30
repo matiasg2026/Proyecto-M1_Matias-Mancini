@@ -76,7 +76,7 @@ Proyecto-M1_Matias-Mancini
 ├── styles.css
 ├── script.js
 ├── README.md
-└── README.pdf
+
 ```
 
 ---
