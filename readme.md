@@ -103,12 +103,6 @@ Durante este proyecto puse en práctica:
 - Uso de Git y GitHub.
 
 
-
-# 👨‍💻 Autor
-
-## Matías Gabriel Mancini
-
-
 ## 🤖 Uso de Inteligencia Artificial
 
 Durante el desarrollo de este proyecto utilicé ChatGPT como herramienta de apoyo para comprender conceptos de HTML, CSS y JavaScript, resolver errores y mejorar la organización del código.
@@ -124,3 +118,7 @@ La IA fue utilizada principalmente para:
 Todas las respuestas obtenidas fueron analizadas, adaptadas y probadas antes de incorporarlas al proyecto, con el objetivo de fortalecer mi aprendizaje y comprender el funcionamiento de cada implementación.
 
 Como evidencia del proceso de desarrollo, en la carpeta **assets/Prompts** se incluyen capturas de las principales consultas realizadas durante el proyecto. Ademas en la carpeta **assets/Img** se incluyen las imagenes de la aplicacion funcionando.
+
+# 👨‍💻 Autor
+
+## Matías Gabriel Mancini
