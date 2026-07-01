@@ -6,6 +6,9 @@
 
 Generador de paletas aleatorias con formatos **HEX** y **HSL**, incluyendo copia del código al portapapeles y notificaciones visuales.
 
+🌐 **Demo del proyecto:**  
+🔗 **[Ver aplicación en línea](https://matiasg2026.github.io/Proyecto-M1_Matias-Mancini/)**
+
 <br>
 
 <img src="./assets/Img/captura1.png" width="700" alt="Vista previa del proyecto">
